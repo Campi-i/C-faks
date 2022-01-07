@@ -1,0 +1,43 @@
+/*4. Omogućiti korisniku unos q (4 < q ≤ 12) vrijednosti elemenata u polje realnih brojeva. Podijeliti
+vrijednost svakog elementa polja koji ima neparni indeks s vrijednosti 2 te nakon toga na ekran
+ispisati polje.*/
+
+#include<stdio.h>
+
+int main(void){
+   
+   int q;
+   float niz[12];
+   
+   printf("Unesite broj elemenata niza \n");
+   do{
+       scanf("%d", &q);
+   }
+   while(q < 5 || q > 12);
+   
+   
+   for(int i = 0; i < q; i++){
+       scanf("%f", &niz[i]);
+   }
+   
+   printf("Polje prije zamijene: ");
+   for(int i = 0; i < q; i++){
+       
+       printf("%f ", niz[i]);
+   }
+   
+   for(int i = 0; i < q; i++){
+       if(i % 2 == 1){
+           niz[i] /= 2;
+       }
+   }
+   
+    printf("Polje poslje zamijene: ");
+   for(int i = 0; i < q; i++){
+       
+       printf("%f ", niz[i]);
+   }
+   
+    
+    return 0;
+}
