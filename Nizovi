@@ -1,0 +1,37 @@
+/*2. Omogućiti korisniku unos n (5 ≤ n ≤ 15) vrijednosti elemenata u polje realnih brojeva. Potom
+odrediti i na ekran ispisati koliko je vrijednosti veće od srednje vrijednosti svih elemenata. */
+
+#include<stdio.h>
+
+int main(void){
+    
+    int n, niz[16], pom = 0;
+    float suma = 0, sv = 0;
+    
+    
+    printf("Unesite broj elemenata\n");
+    
+    do{
+        scanf("%d", &n);
+    }
+    while(n < 5 || n > 15);
+    
+    printf("Unesite elemente niza \n");
+    
+    for(int i = 0; i < n; i++){
+        scanf("%d", &niz[i]);
+        suma += niz[i];
+    }
+    
+    sv = suma / n;
+    
+    for(int i = 0; i < n; i++){
+        if(sv > niz[i]){
+            pom ++;
+        }
+    }
+    
+    printf("%d elemenata je vece od srednje vrijednosti %f", pom, sv);
+    
+    return 0;
+}
