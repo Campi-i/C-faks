@@ -1,0 +1,36 @@
+/*5. Omogućiti korisniku unos vrijednosti elemenata u polje od 12 cijelih brojeva. Potom zamijeniti sve
+pozitivne vrijednosti s aritmetičkom sredinom apsolutnih vrijednosti svih brojeva tog polja. Ispisati
+izmijenjeno polje na ekran.
+*/
+#include<stdio.h>
+#include<stdlib.h>
+int main(void){
+   
+  int niz[13];
+  float sv = 0, suma = 0;
+  
+  for(int i = 0 ; i < 13; i++){
+      scanf("%d", &niz[i]);
+      suma += abs(niz[i]);
+  }
+  
+   sv = suma / 12;
+    
+    printf("Niz prije zamijene: ");
+    for(int i = 0; i < 13; i++){
+        printf("%d  ", niz[i]);
+    }
+
+   
+    for(int i = 0; i < 13; i++){
+        if(niz[i] > 0){
+            niz[i] = sv;
+        }
+    }
+    
+     printf("Niz poslje zamijene: ");
+    for(int i = 0; i < 13; i++){
+        printf("%d  ", niz[i]);
+    }
+    return 0;
+}
