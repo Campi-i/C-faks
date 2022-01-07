@@ -1,0 +1,32 @@
+/*Omogućiti korisniku unos vrijednosti elemenata u polje od 10 cijelih brojeva. Potom ispisati na
+ekran sve indekse kod kojih je vrijednost elemenata djeljiva s 5.
+*/
+#include<stdio.h>
+
+int main(void){
+
+    int niz[10];
+
+    printf("Unesite 10 cijelih brojeva u niz \n");
+
+    for(int i = 0; i < 10; i++){
+        scanf("%d", &niz[i]);
+    }
+
+    for(int i = 0; i < 10; i++){
+        printf("%d  ", niz[i]);
+    }
+
+    printf("\n");
+    
+    for(int i = 0; i < 10; i++){
+        if(niz[i] % 5 == 0){
+            printf("Broj pod indexom: %d \n", i + 1);
+        }
+    }
+
+
+    return 0;
+}
+
+
