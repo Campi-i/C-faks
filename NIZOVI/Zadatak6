@@ -1,0 +1,50 @@
+/*6. Omogućiti korisniku unos n (2 < n ≤ 13) vrijednosti elemenata u polje realnih brojeva. Izračunati
+aritmetičku sredinu svih pozitivnih elemenata polja. Pronaći elemente manje od aritmetičke
+sredine i zamijeniti ih s izračunatom aritmetičkom sredinom. Potom na ekran ispisati izmijenjeno
+polje.
+*/
+#include<stdio.h>
+#include<stdlib.h>
+int main(void){
+   
+   int n;
+   float niz[14], sv = 0, suma = 0;
+   
+   printf("Unesite broj elemenata niza: ");
+   
+   do{
+       scanf("%d", &n);
+   }
+   while(n < 3 || n > 13);
+   
+   printf("\nUnesite elemente niza: ");
+   
+   for(int i = 0; i < n; i++){
+       scanf("%f", &niz[i]);
+       suma += abs(niz[i]); 
+   }
+   
+   sv = suma / n;
+   
+   printf("\nSrednja vrijednost: %f", sv);
+   
+   printf("\nPolje prije zamijene: ");
+   for(int i = 0; i < n; i++){
+       printf("%f  ", niz[i]);
+   }
+   
+   for(int i = 0; i < n; i++){
+       if(niz[i] < sv){
+           niz[i] = sv;
+       }
+   }
+   
+   printf("\nNiz nakon zamijene");
+   for(int i = 0; i < n; i++){
+       printf("%f  ", niz[i]);
+   }
+   
+   
+   
+    return 0;
+}
