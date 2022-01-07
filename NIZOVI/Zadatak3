@@ -1,0 +1,55 @@
+/*3. Omogućiti korisniku unos n (4 ≤ n < 21) vrijednosti elemenata u polje realnih brojeva. Povećati
+vrijednost svakog elemenata većeg od srednje vrijednosti za 10%, a ostalim smanjiti vrijednost za
+10%. */
+
+#include<stdio.h>
+
+int main(void){
+   
+   int n;
+   float niz[20], sv = 0, suma = 0, pom;
+   
+   printf("Unesite broj elemenata niza \n");
+   
+   do{
+       scanf("%d", &n);
+   }
+   while(n < 4 || n > 20);
+    
+    
+    for(int i = 0; i < n; i++){
+        scanf("%f", &niz[i]);
+        suma += niz[i];
+    }
+    
+    sv = suma / n;
+    
+    printf("\nNiz prije promjene:   ");
+    for(int i = 0; i < n; i++){
+        printf("%f  ", niz[i]);
+    }
+    
+    for(int i = 0; i < n; i++){
+        
+        if(niz[i] > sv){
+            
+            pom = niz[i] * 0.1;
+            niz[i] += pom;
+        }
+        
+        else{
+            
+            pom = niz[i] * 0.1;
+            niz[i] -= pom;
+        }
+        
+    }
+    
+    printf("\nNiz nakon promjene:   ");
+    for(int i = 0; i < n; i++){
+        printf("%f  ", niz[i]);
+    }
+    
+    
+    return 0;
+}
