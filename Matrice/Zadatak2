@@ -1,0 +1,58 @@
+/*2. Omogućiti korisniku unos dimenzija matrice realnih brojeva m x n (1 < m < 11 i 5 < n < 9) i njeno
+popunjavanje. Pronaći i na ekran ispisati element matrice s najmanjom vrijednosti.
+*/
+#include<stdio.h>
+#include<stdlib.h>
+int main(void){
+   
+  int m, n, matrix[12][10], min;
+  
+  printf("Unesite broj redaka: ");
+  do{
+      scanf("%d", &m);
+  }
+    while(m < 1 || m > 11);
+    
+    
+  printf("Unesite broj stupaca: ");
+  do{
+      scanf("%d", &n);
+  }
+    while(n < 1 || n > 11);
+   
+   for(int i = 0; i < m; i++){
+       
+       for(int j = 0; j < n; j++){
+           
+           scanf("%d", &matrix[i][j]);
+       }
+   }
+   
+   printf("\nMatrica : \n");
+    for(int i = 0; i < m; i++){
+       
+       for(int j = 0; j < n; j++){
+           
+           printf("%d  ", matrix[i][j]);
+       }
+       printf("\n");
+   }
+    
+    min = matrix[0][0];
+    
+    for(int i = 0; i < m; i++){
+        
+        for(int j = 0; j < n; j++){
+            
+            if(min > matrix[i][j]){
+                min = matrix[i][j];
+            }
+            
+        }
+    }
+    
+    printf("\nNajmanji element matrice je: %d", min);
+    
+    return 0;
+    
+}
