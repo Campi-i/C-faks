@@ -1,0 +1,77 @@
+/*
+Omogućiti korisniku unos dimenzija matrice M x N, gdje je 10 <= m < 25 i 10 <= n < 20
+Popuniti matricu pseudo slucajnim brojevima iz [-2m, 2n]
+U svakom pojedinom retku pronaci najmanju vrijednost te izračunati njihovu aritmeticku vrijednost 
+*/
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+#include<time.h>
+
+int main(void){
+    
+    int m, n, dg, gg;
+    
+    float matrix[24][20] = {0.0f};
+    
+    float sv = 0.0f;
+    
+    printf("Unesite broj redaka: ");
+    do{
+        scanf("%d", &m);
+    }
+    while(m < 10 || m >= 25);
+    
+    printf("\nUnesite broj stupaca: ");
+    do{
+        scanf("%d", &n);
+    }
+    while(n < 10 || n >= 20);
+    
+    srand((unsigned) time(NULL));
+    
+    dg = -2 * m;
+    gg = 2 * n;
+    
+    for(int i = 0; i < m; i++){
+        
+        for(int j = 0; j < n; j++){
+            matrix[i][j] = dg + (float)rand() / RAND_MAX * (gg - dg);
+        }
+    }
+    
+    for(int i = 0; i < m; i++){
+        
+        for(int j = 0; j < n; j++){
+            printf("%8.2f ", matrix[i][j]);
+        }
+        printf("\n");
+    }
+    
+    for(int i = 0; i < m; i++){
+        
+        float min = matrix[i][0];
+        
+        for(int j = 0; j < n; j++){
+            
+            if(matrix[i][j] < min){
+                min = matrix[i][j];
+            }
+        }
+        
+        printf("%d. red: %8.2f min\n", i, min);
+        
+        sv += min;
+    }
+    
+    printf("Ukupna srednja vrijednost elemenata: %8.2f \n", sv);
+    
+    sv /= m;
+    printf("Aritmeticka srednja vrijednost: %8.2f \n", sv);
+    
+    
+    
+    return 0;
+    
+}
