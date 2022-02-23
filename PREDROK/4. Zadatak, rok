@@ -1,0 +1,58 @@
+/*Napisati funkciju koja određuje i vraća "najvece" malo slovo u predanom joj strinug.
+Ako string ne sadrži niti jedno malo slovo funkcija vraća nul-znak. U svrhu testiranja u funkciji main 
+dinamicki zauzeti memoriju za 20 podataka tipa char */
+
+
+#include<stdlib.h>
+#include<stdio.h>
+#include<string.h>
+void funkcija(char stringP[]);
+int main(void){
+    int n;
+    char *string = NULL;
+    
+    string = (char*) calloc(20 + 1, sizeof(char));
+    
+    if(string == NULL){
+        return 1;
+    }
+    
+    fgets(string, 20, stdin);
+    
+    n = strlen(string);
+    if(string[n - 1] == '\n'){
+        string[n - 1] = '\0';
+    }
+    
+    funkcija(string);
+    
+    free(string);
+    
+    string = NULL;
+    
+    return 0;
+}
+
+void funkcija(char stringP[]){
+    
+    char max = 'a';
+    int n = 0;
+    for(int i = 0; stringP[i] != '\0'; i++){
+        
+        if(stringP[i] > max){
+            max = stringP[i];
+        }
+        if(stringP[i] >= 'a' && stringP[i] <= 'z'){
+        n = 1;
+        }
+        
+    }
+    
+    if(n == 0){
+        printf("Nema malih slova");
+    }
+    else{
+    printf("%c", max);
+        
+    }
+}
