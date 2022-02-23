@@ -1,0 +1,70 @@
+/*1. Omogućiti korinsiku unos dimenzija kvadratne matrice dimenzija m * m
+gdje je m neparan i 4 < m <= 24 Popuniti matricu pseudo slucajnim brojevima iz [-19, 25]
+izracunati aritmeticku sredinu elemenata ispod glavvne dijagonale te asr elemenata iznad sporedne dijagonale
+Zatim izracunati i na ekran ispisati apsolutnu vrijednost razlike izracunatih vrijednosti*/
+
+#include<stdlib.h>
+#include<math.h>
+#include<stdio.h>
+#include<time.h>
+
+int main(void){
+    
+    int m, br1 = 0, br2 = 0;
+    int matrix[24][24];
+    float svgl = 0, svsp = 0, pom =0;
+    
+    printf("Unesite dimentije matrice: ");
+    do{
+        scanf("%d", &m);
+    }
+    while(m <= 4 || m >= 25 || m % 2 ==0);
+    
+    srand((unsigned) time (NULL));
+    
+    for(int i = 0; i < m; i++){
+        
+        for(int j = 0; j < m; j++){
+            matrix[i][j] = -19 + (float)rand() / RAND_MAX * (25 - (-19));      
+        }
+    }
+    
+    for(int i = 0; i < m; i++){
+        for(int j = 0; j < m; j++){
+            printf("%d   ", matrix[i][j]);
+        }
+        printf("\n");
+    }
+    
+    for(int i = 0; i < m; i++){
+        for(int j = 0; j < m; j++){
+            if(i > j){
+                svgl += matrix[i][j];
+                br1 ++;
+            }
+        }
+    }
+    
+    for(int i = 0; i < m; i++){
+        for(int j = 0; j < m; j++){
+            if(i + j < m - 1){
+                svsp += matrix[i][j];
+                br2 ++;
+            }
+        }
+    }
+    
+    svgl /= br1;
+    svsp /= br2;
+    printf("\nSrednja vrijednost elemenata ispod glavne dijagonale: %8.2f \n", svgl);
+    printf("Srednja vrijednost elemenata iznad sporedne dijagonale: %8.2f \n", svsp);
+    
+    pom = (float)abs(svgl - svsp);
+    
+    printf("\nApsoludtna vrijednost elemenata: %8.2f \n", pom);
+    
+    
+    
+    
+    return 0;
+}
